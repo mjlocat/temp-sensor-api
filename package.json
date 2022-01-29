@@ -1,0 +1,37 @@
+{
+  "name": "temp-sensor-api",
+  "version": "1.0.0",
+  "description": "Temperature Sensor API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjlocat/temp-sensor-api.git"
+  },
+  "author": "Michael Locatelli",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mjlocat/temp-sensor-api/issues"
+  },
+  "homepage": "https://github.com/mjlocat/temp-sensor-api#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.0.0",
+    "jest": "^27.4.7",
+    "regenerator-runtime": "^0.13.9",
+    "supertest": "^6.2.2"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "winston": "^3.5.0"
+  }
+}
