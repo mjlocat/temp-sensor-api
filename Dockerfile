@@ -10,4 +10,6 @@ RUN npm install
 
 COPY * /app/
 
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
+
+EXPOSE 5000
