@@ -18,16 +18,11 @@
   },
   "homepage": "https://github.com/mjlocat/temp-sensor-api#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.12",
-    "@babel/node": "^7.16.8",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
-    "@babel/preset-env": "^7.16.11",
     "eslint": "^8.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.0.0",
     "jest": "^27.4.7",
-    "regenerator-runtime": "^0.13.9",
     "supertest": "^6.2.2"
   },
   "dependencies": {
