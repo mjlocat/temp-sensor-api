@@ -1,18 +1,30 @@
 const { getMockReq, getMockRes } = require('@jest-mock/express');
+const Sensors = require('./sensors');
+
+jest.mock('./sensors');
+
 const handlers = require('./handlers');
 
-test('Post Temperature', () => {
+const { res, next, mockClear } = getMockRes();
+
+beforeEach(() => {
+  mockClear();
+});
+
+test('Post Temperature', async () => {
   const req = getMockReq({
-    id: 1,
-    temperature: 50,
-    humidity: 50,
+    body: {
+      id: 1,
+      temperature: 50,
+      humidity: 50,
+    },
   });
-  const { res, next, clearMockRes } = getMockRes();
-  handlers.postTemperature(req, res, next);
+  Sensors.create.mockResolvedValue(2);
+  await handlers.postTemperature(req, res, next);
   expect(res.status).toHaveBeenCalledWith(200);
-  expect(res.send).toHaveBeenCalledWith({
+  expect(res.json).toHaveBeenCalledWith({
     status: 200,
-    id: 1,
+    id: 2,
   });
-  clearMockRes();
+  expect(next).toBeCalled();
 });

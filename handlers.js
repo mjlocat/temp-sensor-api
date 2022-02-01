@@ -1,9 +1,14 @@
-function postTemperature(req, res) {
-  const { id, temperature, humidity } = req;
-  res.status(200).send({
+const Sensors = require('./sensors');
+
+async function postTemperature(req, res, next) {
+  const { id, temperature, humidity } = req.body;
+  const insertedId = await Sensors.create({ sensorid: id, temperature, humidity });
+  res.status(200);
+  res.json({
     status: 200,
-    id,
+    id: insertedId,
   });
+  next();
 }
 
 module.exports = {

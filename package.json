@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "express": "^4.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.15.0",
     "winston": "^3.5.0"
   }
 }
