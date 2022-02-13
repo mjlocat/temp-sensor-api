@@ -1,0 +1,29 @@
+// const Sequelize = require('sequelize');
+const sensorModel = require('../models/sensors');
+
+// jest.mock('sequelize');
+jest.mock('../models/sensors', () => () => {
+  const SequelizeMock = require('sequelize-mock'); // eslint-disable-line global-require
+  const dbMock = new SequelizeMock();
+  return dbMock.define('sensors');
+});
+const sensors = require('./sensors');
+
+sensorModel.syncTable = jest.fn(async () => true);
+
+// test('Test init()', async () => {
+//   await sensors.init();
+//   // expect(sensorModel).toBeCalled();
+//   expect(sensorModel.sync).toBeCalled();
+// });
+
+test('Test addReading()', async () => {
+  await sensors.init();
+  const id = await sensors.addReading(1, 70, 50);
+  expect(id).toBe(1);
+  const readings = await sensors.getReadingById(id);
+  console.log(readings);
+  expect(readings.sensorid).toBe(1);
+  expect(readings.temperature).toBe(70);
+  expect(readings.humidity).toBe(50);
+});

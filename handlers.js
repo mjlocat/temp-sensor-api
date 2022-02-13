@@ -1,8 +1,8 @@
-const Sensors = require('./sensors');
+const Sensors = require('./dao/sensors');
 
 async function postTemperature(req, res, next) {
   const { id, temperature, humidity } = req.body;
-  const insertedId = await Sensors.create({ sensorid: id, temperature, humidity });
+  const insertedId = await Sensors.addReading(id, temperature, humidity);
   res.status(200);
   res.json({
     status: 200,

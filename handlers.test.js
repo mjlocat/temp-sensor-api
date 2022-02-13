@@ -1,7 +1,7 @@
 const { getMockReq, getMockRes } = require('@jest-mock/express');
-const Sensors = require('./sensors');
+const Sensors = require('./dao/sensors');
 
-jest.mock('./sensors');
+jest.mock('./dao/sensors');
 
 const handlers = require('./handlers');
 
@@ -19,7 +19,7 @@ test('Post Temperature', async () => {
       humidity: 50,
     },
   });
-  Sensors.create.mockResolvedValue(2);
+  Sensors.addReading.mockResolvedValue(2);
   await handlers.postTemperature(req, res, next);
   expect(res.status).toHaveBeenCalledWith(200);
   expect(res.json).toHaveBeenCalledWith({
